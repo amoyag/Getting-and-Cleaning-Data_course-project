@@ -80,8 +80,8 @@ testsubj <- read.table("./UCI HAR Dataset/test/	subject_test.txt", header=FALSE)
 
 traindata <- read.table("./UCI HAR Dataset/train/X_train.txt", header=FALSE)
 
-trainlabel <- read.table("./UCI HAR Dataset/train/y_train.txt", header=FALSE
-)
+trainlabel <- read.table("./UCI HAR Dataset/train/y_train.txt", header=FALSE)
+
 trainsubj <- read.table("./UCI HAR Dataset/train/subject_train.txt", header=FALSE)
 
 ``
