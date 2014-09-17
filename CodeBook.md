@@ -71,18 +71,18 @@ Unziped and stored in UCI HAR Dataset.
 
 ## Load each data set and labels as a frame
 
-<code>
+``
 testdata <- read.table("./UCI HAR Dataset/test/X_test.txt", header=FALSE)
 testlabel <- read.table("./UCI HAR Dataset/test/y_test.txt", header=FALSE)
 testsubj <- read.table("./UCI HAR Dataset/test/	subject_test.txt", header=FALSE)
 traindata <- read.table("./UCI HAR Dataset/train/X_train.txt", header=FALSE)
 trainlabel <- read.table("./UCI HAR Dataset/train/y_train.txt", header=FALSE)
 trainsubj <- read.table("./UCI HAR Dataset/train/subject_train.txt", header=FALSE)
-</code>
-
+``
 ## Name columns before merging into a big data frame
 It is easier to use descriptive activity names to name the activities in each data set before merging them in the complete data set.
-<pre><code>
+
+``
 act <- read.table("./UCI HAR Dataset/activity_labels.txt", header=FALSE, colClasses="character")
 carac <- read.table("./UCI HAR Dataset/features.txt",header=FALSE,colClasses="character")
 testlabel$V1 <- factor(testlabel$V1, levels=act$V1, labels=act$V2)
@@ -93,26 +93,25 @@ names(testlabel) <- c("activity")
 names(trainlabel) <- c("activity")
 names(testsubj) <- c("subject")
 names(trainsubj) <- c("subject")
-</code></pre>
+``
 ## Merge the training and the test sets to create one data set.
-<pre><code>
+``
 test<-cbind(testlabel, testdata)
 test<-cbind(testsubj,test)
-	
 train<-cbind(trainlabel,traindata)
 train<-cbind(trainsubj,train)
-	
 all<-rbind(train,test)
-</code></pre>
+``
 ## Transform the data frame into a data table
 The package <code>data.table</code> allows to apply the mean function to every column, grouped by subject and activity.
-<pre><code>
+
+``
 library(data.table)
 DT <- data.table(all)
 all_tidy<-DT[,lapply(.SD,mean), by="subject,activity"]
-</code></pre>
+``
 
 ## Write out the tidy data set
-<pre><code>
+``
 write.table(all_tidy, file="all_tidy.txt", sep="\t", row.names = FALSE)
-</code></pre>
+``
