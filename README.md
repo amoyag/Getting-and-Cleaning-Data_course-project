@@ -1,0 +1,6 @@
+This repo contains the code for the project assignment of the Coursera course Getting and Cleaning Data.
+The purpose of this project is to demonstrate my ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis.
+It uses the data collected from the accelerometers from the Samsung Galaxy S smartphone, of an experiment in the field of wearable computing. See <code>CodeBook.md</code> for more info.
+
+The data set "Human Activity Recognition Using Smartphones" has been downloaded from [UCI Human Activity Recognition Using Smartphones Data Set](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) and stored in the <code>UCI HAR Dataset</code> directory.
+The `run_analysis.R` script can be run without any parameters. It collects the data, merges the train and test data sets and creates a clean data set `all_tidy.txt`. This clean data set contains the average of each variable for each activity and each subject.
