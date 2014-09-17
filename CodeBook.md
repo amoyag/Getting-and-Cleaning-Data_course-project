@@ -21,23 +21,23 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 These signals were used to estimate variables of the feature vector for each pattern:  
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
 
-tBodyAcc-XYZ
-tGravityAcc-XYZ
-tBodyAccJerk-XYZ
-tBodyGyro-XYZ
-tBodyGyroJerk-XYZ
-tBodyAccMag
-tGravityAccMag
-tBodyAccJerkMag
-tBodyGyroMag
-tBodyGyroJerkMag
-fBodyAcc-XYZ
-fBodyAccJerk-XYZ
-fBodyGyro-XYZ
-fBodyAccMag
-fBodyAccJerkMag
-fBodyGyroMag
-fBodyGyroJerkMag
+- tBodyAcc-XYZ
+- tGravityAcc-XYZ
+- tBodyAccJerk-XYZ
+- tBodyGyro-XYZ
+- tBodyGyroJerk-XYZ
+- tBodyAccMag
+- tGravityAccMag
+- tBodyAccJerkMag
+- tBodyGyroMag
+- tBodyGyroJerkMag
+- fBodyAcc-XYZ
+- fBodyAccJerk-XYZ
+- fBodyGyro-XYZ
+- fBodyAccMag
+- fBodyAccJerkMag
+- fBodyGyroMag
+- fBodyGyroJerkMag
 
 The set of variables that were estimated from these signals are: 
 - mean(): Mean value
@@ -80,16 +80,18 @@ Unziped and stored in UCI HAR Dataset.
 
 ## Name columns before merging into a big data frame
 It is easier to use descriptive activity names to name the activities in each data set before merging them in the complete data set.
-	act <- read.table("./UCI HAR Dataset/activity_labels.txt", header=FALSE, colClasses="character")
-	carac <- read.table("./UCI HAR Dataset/features.txt",header=FALSE,colClasses="character")
-	testlabel$V1 <- factor(testlabel$V1, levels=act$V1, labels=act$V2)
-	trainlabel$V1 <- factor(trainlabel$V1, levels=act$V1, labels=act$V2)
-	names(testdata) <- carac$V2
-	names(traindata) <- carac$V2
-	names(testlabel) <- c("activity")
-	names(trainlabel) <- c("activity")
-	names(testsubj) <- c("subject")
-	names(trainsubj) <- c("subject")
+```
+act <- read.table("./UCI HAR Dataset/activity_labels.txt", header=FALSE, colClasses="character")
+carac <- read.table("./UCI HAR Dataset/features.txt",header=FALSE,colClasses="character")
+testlabel$V1 <- factor(testlabel$V1, levels=act$V1, labels=act$V2)
+trainlabel$V1 <- factor(trainlabel$V1, levels=act$V1, labels=act$V2)
+names(testdata) <- carac$V2
+names(traindata) <- carac$V2
+names(testlabel) <- c("activity")
+names(trainlabel) <- c("activity")
+names(testsubj) <- c("subject")
+names(trainsubj) <- c("subject")
+```
 ## Merge the training and the test sets to create one data set.
 	test<-cbind(testlabel, testdata)
 	test<-cbind(testsubj,test)
