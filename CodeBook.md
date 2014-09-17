@@ -88,7 +88,7 @@ trainsubj <- read.table("./UCI HAR Dataset/train/subject_train.txt", header=FALS
 ## Name columns before merging into a big data frame
 It is easier to use descriptive activity names to name the activities in each data set before merging them in the complete data set.
 
-``
+```
 act <- read.table("./UCI HAR Dataset/activity_labels.txt", header=FALSE, colClasses="character")
 carac <- read.table("./UCI HAR Dataset/features.txt",header=FALSE,colClasses="character")
 testlabel$V1 <- factor(testlabel$V1, levels=act$V1, labels=act$V2)
@@ -99,25 +99,25 @@ names(testlabel) <- c("activity")
 names(trainlabel) <- c("activity")
 names(testsubj) <- c("subject")
 names(trainsubj) <- c("subject")
-``
+```
 ## Merge the training and the test sets to create one data set.
-``
+```
 test<-cbind(testlabel, testdata)
 test<-cbind(testsubj,test)
 train<-cbind(trainlabel,traindata)
 train<-cbind(trainsubj,train)
 all<-rbind(train,test)
-``
+```
 ## Transform the data frame into a data table
 The package <code>data.table</code> allows to apply the mean function to every column, grouped by subject and activity.
 
-``
+```
 library(data.table)
 DT <- data.table(all)
 all_tidy<-DT[,lapply(.SD,mean), by="subject,activity"]
-``
+```
 
 ## Write out the tidy data set
-``
+```
 write.table(all_tidy, file="all_tidy.txt", sep="\t", row.names = FALSE)
-``
+```
