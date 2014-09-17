@@ -71,7 +71,7 @@ Unziped and stored in UCI HAR Dataset.
 
 ## Load each data set and labels as a frame
 
-``
+```
 testdata <- read.table("./UCI HAR Dataset/test/X_test.txt", header=FALSE)
 
 testlabel <- read.table("./UCI HAR Dataset/test/y_test.txt", header=FALSE)
@@ -84,7 +84,7 @@ trainlabel <- read.table("./UCI HAR Dataset/train/y_train.txt", header=FALSE)
 
 trainsubj <- read.table("./UCI HAR Dataset/train/subject_train.txt", header=FALSE)
 
-``
+```
 ## Name columns before merging into a big data frame
 It is easier to use descriptive activity names to name the activities in each data set before merging them in the complete data set.
 
